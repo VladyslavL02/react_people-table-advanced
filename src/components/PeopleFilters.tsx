@@ -29,14 +29,6 @@ export const PeopleFilters = () => {
       centuries: getUpdatedCenturies(century),
     };
   };
-  // const getNewCenturyAddress = (century: string) => {
-  //   return {
-  //     pathname: '/people',
-  //     search: getSearchWith(searchParams, {
-  //       centuries: getUpdatedCenturies(century),
-  //     }),
-  //   };
-  // };
 
   return (
     <nav className="panel">
@@ -65,30 +57,6 @@ export const PeopleFilters = () => {
         >
           Female
         </SearchLink>
-        {/* <Link
-          className={cn({ 'is-active': sex === '' })}
-          to={{ pathname: '/people' }}
-        >
-          All
-        </Link>
-        <Link
-          className={cn({ 'is-active': sex === 'm' })}
-          to={{
-            pathname: '/people',
-            search: getSearchWith(searchParams, { sex: 'm' }),
-          }}
-        >
-          Male
-        </Link>
-        <Link
-          className={cn({ 'is-active': sex === 'f' })}
-          to={{
-            pathname: '/people',
-            search: getSearchWith(searchParams, { sex: 'f' }),
-          }}
-        >
-          Female
-        </Link> */}
       </p>
 
       <div className="panel-block">
@@ -122,16 +90,6 @@ export const PeopleFilters = () => {
               >
                 {century}
               </SearchLink>
-              // <Link
-              //   key={century}
-              //   data-cy="century"
-              //   className={cn('button mr-1', {
-              //     'is-info': centuriesSelected.includes(century),
-              //   })}
-              //   to={getNewCenturyAddress(century)}
-              // >
-              //   {century}
-              // </Link>
             ))}
           </div>
 
@@ -147,18 +105,6 @@ export const PeopleFilters = () => {
             >
               All
             </SearchLink>
-            {/* <Link
-              data-cy="centuryALL"
-              className={cn('button is-success', {
-                'is-outlined': centuriesSelected.length,
-              })}
-              to={{
-                pathname: '/people',
-                search: getSearchWith(searchParams, { centuries: [] }),
-              }}
-            >
-              All
-            </Link> */}
           </div>
         </div>
       </div>

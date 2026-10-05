@@ -39,15 +39,6 @@ export const PeopleTable: React.FC<Props> = ({ people }) => {
 
     return { sort: sortValue, order: null };
   };
-  // const getSortSearch = (sortValue: string) => {
-  //   if (sortValue === sort) {
-  //     return order === 'desc'
-  //       ? getSearchWith(searchParams, { sort: null, order: null })
-  //       : getSearchWith(searchParams, { order: 'desc' });
-  //   }
-
-  //   return getSearchWith(searchParams, { sort: sortValue, order: null });
-  // };
 
   return (
     <table
@@ -71,17 +62,6 @@ export const PeopleTable: React.FC<Props> = ({ people }) => {
                   />
                 </span>
               </SearchLink>
-              {/* <Link to={{ pathname: '/people', search: getSortSearch('name') }}>
-                <span className="icon">
-                  <i
-                    className={cn('fas', {
-                      'fa-sort': sort !== 'name',
-                      'fa-sort-up': sort === 'name' && order !== 'desc',
-                      'fa-sort-down': sort === 'name' && order === 'desc',
-                    })}
-                  />
-                </span>
-              </Link> */}
             </span>
           </th>
 
@@ -99,17 +79,6 @@ export const PeopleTable: React.FC<Props> = ({ people }) => {
                   />
                 </span>
               </SearchLink>
-              {/* <Link to={{ pathname: '/people', search: getSortSearch('sex') }}>
-                <span className="icon">
-                  <i
-                    className={cn('fas', {
-                      'fa-sort': sort !== 'sex',
-                      'fa-sort-up': sort === 'sex' && order !== 'desc',
-                      'fa-sort-down': sort === 'sex' && order === 'desc',
-                    })}
-                  />
-                </span>
-              </Link> */}
             </span>
           </th>
 
@@ -127,17 +96,6 @@ export const PeopleTable: React.FC<Props> = ({ people }) => {
                   />
                 </span>
               </SearchLink>
-              {/* <Link to={{ pathname: '/people', search: getSortSearch('born') }}>
-                <span className="icon">
-                  <i
-                    className={cn('fas', {
-                      'fa-sort': sort !== 'born',
-                      'fa-sort-up': sort === 'born' && order !== 'desc',
-                      'fa-sort-down': sort === 'born' && order === 'desc',
-                    })}
-                  />
-                </span>
-              </Link> */}
             </span>
           </th>
 
@@ -155,17 +113,6 @@ export const PeopleTable: React.FC<Props> = ({ people }) => {
                   />
                 </span>
               </SearchLink>
-              {/* <Link to={{ pathname: '/people', search: getSortSearch('died') }}>
-                <span className="icon">
-                  <i
-                    className={cn('fas', {
-                      'fa-sort': sort !== 'died',
-                      'fa-sort-up': sort === 'died' && order !== 'desc',
-                      'fa-sort-down': sort === 'died' && order === 'desc',
-                    })}
-                  />
-                </span>
-              </Link> */}
             </span>
           </th>
 

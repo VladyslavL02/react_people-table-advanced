@@ -13,13 +13,14 @@ type Props = {
 function getParentLinkName(
   parentName: string | null,
   parent: Person | undefined,
+  people: Person[],
 ) {
   if (!parentName) {
     return '-';
   }
 
   if (parent) {
-    return <PersonLink person={parent} />;
+    return <PersonLink person={parent} people={people} />;
   }
 
   return parentName;
@@ -130,13 +131,17 @@ export const PeopleTable: React.FC<Props> = ({ people }) => {
             })}
           >
             <td>
-              <PersonLink person={person} />
+              <PersonLink person={person} people={people} />
             </td>
             <td>{person.sex}</td>
             <td>{person.born}</td>
             <td>{person.died}</td>
-            <td>{getParentLinkName(person.motherName, person.mother)}</td>
-            <td>{getParentLinkName(person.fatherName, person.father)}</td>
+            <td>
+              {getParentLinkName(person.motherName, person.mother, people)}
+            </td>
+            <td>
+              {getParentLinkName(person.fatherName, person.father, people)}
+            </td>
           </tr>
         ))}
       </tbody>

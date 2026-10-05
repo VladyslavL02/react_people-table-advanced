@@ -1,6 +1,7 @@
 import { Link, useSearchParams } from 'react-router-dom';
 import cn from 'classnames';
 import { getSearchWith } from '../utils/searchHelper';
+import { SearchLink } from './SearchLink';
 
 export const PeopleFilters = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -25,19 +26,46 @@ export const PeopleFilters = () => {
 
   const getNewCenturyAddress = (century: string) => {
     return {
-      pathname: '/people',
-      search: getSearchWith(searchParams, {
-        centuries: getUpdatedCenturies(century),
-      }),
+      centuries: getUpdatedCenturies(century),
     };
   };
+  // const getNewCenturyAddress = (century: string) => {
+  //   return {
+  //     pathname: '/people',
+  //     search: getSearchWith(searchParams, {
+  //       centuries: getUpdatedCenturies(century),
+  //     }),
+  //   };
+  // };
 
   return (
     <nav className="panel">
       <p className="panel-heading">Filters</p>
 
       <p className="panel-tabs" data-cy="SexFilter">
-        <Link
+        <SearchLink
+          params={{ sex: null }}
+          className={cn({ 'is-active': sex === '' })}
+        >
+          All
+        </SearchLink>
+        <SearchLink
+          className={cn({ 'is-active': sex === 'm' })}
+          params={{
+            sex: 'm',
+          }}
+        >
+          Male
+        </SearchLink>
+        <SearchLink
+          className={cn({ 'is-active': sex === 'f' })}
+          params={{
+            sex: 'f',
+          }}
+        >
+          Female
+        </SearchLink>
+        {/* <Link
           className={cn({ 'is-active': sex === '' })}
           to={{ pathname: '/people' }}
         >
@@ -60,7 +88,7 @@ export const PeopleFilters = () => {
           }}
         >
           Female
-        </Link>
+        </Link> */}
       </p>
 
       <div className="panel-block">
@@ -84,21 +112,42 @@ export const PeopleFilters = () => {
         <div className="level is-flex-grow-1 is-mobile" data-cy="CenturyFilter">
           <div className="level-left">
             {['16', '17', '18', '19', '20'].map(century => (
-              <Link
+              <SearchLink
                 key={century}
                 data-cy="century"
                 className={cn('button mr-1', {
                   'is-info': centuriesSelected.includes(century),
                 })}
-                to={getNewCenturyAddress(century)}
+                params={getNewCenturyAddress(century)}
               >
                 {century}
-              </Link>
+              </SearchLink>
+              // <Link
+              //   key={century}
+              //   data-cy="century"
+              //   className={cn('button mr-1', {
+              //     'is-info': centuriesSelected.includes(century),
+              //   })}
+              //   to={getNewCenturyAddress(century)}
+              // >
+              //   {century}
+              // </Link>
             ))}
           </div>
 
           <div className="level-right ml-4">
-            <Link
+            <SearchLink
+              data-cy="centuryALL"
+              className={cn('button is-success', {
+                'is-outlined': centuriesSelected.length,
+              })}
+              params={{
+                centuries: [],
+              }}
+            >
+              All
+            </SearchLink>
+            {/* <Link
               data-cy="centuryALL"
               className={cn('button is-success', {
                 'is-outlined': centuriesSelected.length,
@@ -109,7 +158,7 @@ export const PeopleFilters = () => {
               }}
             >
               All
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>
